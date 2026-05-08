@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+}
+
+const { title, description, slug } = Astro.props;
+---
+
+<article class="border border-gray-200 rounded-lg p-5 hover:border-gray-400 transition-colors bg-white">
+  <h3 class="font-semibold text-gray-900 mb-2">
+    <a href={`/services/${slug}`} class="hover:underline">
+      {title}
+    </a>
+  </h3>
+  <p class="text-sm text-gray-600 leading-relaxed">{description}</p>
+  <a
+    href={`/services/${slug}`}
+    class="mt-3 inline-block text-sm font-medium hover:underline"
+    style="color: var(--color-accent);"
+  >
+    Learn more →
+  </a>
+</article>

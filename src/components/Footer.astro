@@ -1,0 +1,60 @@
+---
+import { siteConfig } from '../site.config';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 text-gray-300 mt-16 py-10 px-4">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
+    <div>
+      <p class="font-semibold text-white mb-2">{siteConfig.businessName}</p>
+      <p>{siteConfig.addressStreet}</p>
+      <p>{siteConfig.primaryCity}, {siteConfig.state} {siteConfig.addressZip}</p>
+      <a href={`tel:${siteConfig.phone}`} class="mt-2 block hover:text-white transition-colors">
+        {siteConfig.phone}
+      </a>
+      <a href={`mailto:${siteConfig.email}`} class="block hover:text-white transition-colors">
+        {siteConfig.email}
+      </a>
+    </div>
+
+    <div>
+      <p class="font-semibold text-white mb-2">Services</p>
+      <ul class="space-y-1">
+        {siteConfig.services.map((s) => (
+          <li>
+            <a
+              href={`/services/${s.toLowerCase().replace(/\s+/g, '-')}`}
+              class="hover:text-white transition-colors"
+            >
+              {s}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <p class="font-semibold text-white mb-2">Service area</p>
+      <ul class="space-y-1">
+        {siteConfig.serviceArea.slice(0, 6).map((city) => (
+          <li>
+            <a
+              href={`/areas/${city.toLowerCase().replace(/\s+/g, '-')}`}
+              class="hover:text-white transition-colors"
+            >
+              {city}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto mt-8 pt-6 border-t border-gray-700 text-xs text-gray-500 flex flex-col sm:flex-row justify-between gap-2">
+    <p>&copy; {year} {siteConfig.businessName}. All rights reserved.</p>
+    <nav class="flex gap-4">
+      <a href="/contact" class="hover:text-gray-300 transition-colors">Contact</a>
+      <a href="/faq" class="hover:text-gray-300 transition-colors">FAQ</a>
+    </nav>
+  </div>
+</footer>

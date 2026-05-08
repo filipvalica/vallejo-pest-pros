@@ -1,0 +1,28 @@
+---
+import { siteConfig } from '../site.config';
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": siteConfig.schema.businessType,
+  "name": siteConfig.businessName,
+  "telephone": siteConfig.phone,
+  "email": siteConfig.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteConfig.addressStreet,
+    "addressLocality": siteConfig.primaryCity,
+    "addressRegion": siteConfig.state,
+    "postalCode": siteConfig.addressZip,
+    "addressCountry": "US"
+  },
+  "areaServed": siteConfig.serviceArea.map(city => ({
+    "@type": "City",
+    "name": city
+  })),
+  "priceRange": siteConfig.schema.priceRange,
+  "openingHours": siteConfig.schema.openingHours,
+  "url": Astro.site?.href ?? "",
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />

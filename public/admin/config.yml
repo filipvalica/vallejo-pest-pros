@@ -1,0 +1,60 @@
+# Decap CMS configuration
+# Docs: https://decapcms.org/docs/configuration-options/
+#
+# After cloning for a new site:
+#   1. Set repo: to the new site's GitHub repo path
+#   2. Update site_url and logo_url
+#   3. Connect via Cloudflare Pages OAuth (or Netlify Identity as fallback)
+
+backend:
+  name: github
+  repo: filipvalica/vallejo-pest-pros
+  branch: main
+  base_url: https://sveltia-cms-auth.PLACEHOLDER.workers.dev  # optional OAuth proxy — set up later
+
+# Point to where the built site will live
+site_url: https://vallejopestpros.com
+logo_url: /favicon.svg
+
+# Editorial workflow — lets VA save drafts before publishing
+publish_mode: editorial_workflow
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: services
+    label: Services
+    folder: src/content/services
+    create: true
+    slug: "{{slug}}"
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Display order, name: order, widget: number, default: 0 }
+      - { label: Hero heading (optional), name: heroHeading, widget: string, required: false }
+      - label: FAQs
+        name: faqs
+        widget: list
+        required: false
+        fields:
+          - { label: Question, name: q, widget: string }
+          - { label: Answer, name: a, widget: text }
+      - { label: Body content, name: body, widget: markdown }
+
+  - name: areas
+    label: Service areas
+    folder: src/content/areas
+    create: true
+    slug: "{{slug}}"
+    extension: mdx
+    format: frontmatter
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: City, name: city, widget: string }
+      - { label: State, name: state, widget: string }
+      - { label: Zip code, name: zip, widget: string, required: false }
+      - { label: Body content, name: body, widget: markdown }

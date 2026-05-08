@@ -1,0 +1,17 @@
+---
+import { siteConfig } from '../site.config';
+// Twilio call tracking: the phone number in site.config.ts IS the Twilio number.
+// No client-side swap script needed — the number is already baked in at build time.
+// If you later switch to CallTrackingMetrics, replace this with the CTM snippet:
+//   <script src="//cdn.calltrackingmetrics.com/swap.js" data-ctm-account={ctmAccountId} async />
+//
+// For Twilio dynamic number insertion (DNI) via analytics, paste Twilio's
+// analytics.js snippet below and set the data attribute to siteConfig.twilio.accountSid.
+const isDev = import.meta.env.DEV;
+---
+
+{!isDev && (
+  <!-- Twilio DNI placeholder: replace with real snippet when Twilio project is set up -->
+  <!-- <script src="https://media.twiliocdn.com/sdk/js/insights/v1/twilio-insights.min.js"
+    data-twilio-account={siteConfig.twilio.accountSid} async></script> -->
+)}

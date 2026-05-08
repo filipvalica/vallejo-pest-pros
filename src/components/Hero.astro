@@ -1,0 +1,46 @@
+---
+import { siteConfig } from '../site.config';
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  heading = `${siteConfig.niche.replace(/-/g, ' ')} in ${siteConfig.primaryCity}, ${siteConfig.state}`,
+  subheading = siteConfig.tagline,
+} = Astro.props;
+---
+
+<section class="bg-gray-50 border-b border-gray-200 py-16 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 capitalize">
+      {heading}
+    </h1>
+
+    <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+      {subheading}
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a
+        href={`tel:${siteConfig.phone}`}
+        class="inline-flex items-center justify-center gap-2 text-white px-6 py-3 rounded font-semibold text-base transition-opacity hover:opacity-90"
+        style={`background-color: var(--color-accent);`}
+      >
+        <!-- phone icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+        </svg>
+        Call now
+      </a>
+
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-800 px-6 py-3 rounded font-semibold text-base transition-colors hover:border-gray-400"
+      >
+        Get a free quote
+      </a>
+    </div>
+  </div>
+</section>

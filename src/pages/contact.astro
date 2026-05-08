@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { siteConfig } from '../site.config';
+---
+
+<BaseLayout
+  title="Contact us"
+  description={`Contact ${siteConfig.businessName} for ${siteConfig.services[0]?.toLowerCase() ?? 'service'} in ${siteConfig.primaryCity}, ${siteConfig.state}. Call ${siteConfig.phone} or submit a request.`}
+>
+  <div class="max-w-3xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div>
+      <h1 class="text-3xl font-bold text-gray-900 mb-4">Contact us</h1>
+      <p class="text-gray-600 mb-6">
+        Ready to schedule or have a question? Call us directly or fill out the form.
+      </p>
+
+      <dl class="space-y-4 text-sm">
+        <div>
+          <dt class="font-semibold text-gray-700">Phone</dt>
+          <dd>
+            <a href={`tel:${siteConfig.phone}`} class="hover:underline" style="color: var(--color-accent);">
+              {siteConfig.phone}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-700">Email</dt>
+          <dd>
+            <a href={`mailto:${siteConfig.email}`} class="hover:underline" style="color: var(--color-accent);">
+              {siteConfig.email}
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-700">Hours</dt>
+          <dd class="text-gray-600">Monday – Sunday, 7 am – 7 pm</dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-gray-700">Service area</dt>
+          <dd class="text-gray-600">{siteConfig.serviceArea.join(', ')}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div>
+      <ContactForm />
+    </div>
+  </div>
+</BaseLayout>

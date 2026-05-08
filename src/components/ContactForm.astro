@@ -1,0 +1,81 @@
+---
+import { siteConfig } from '../site.config';
+const submitted = Astro.url.searchParams.get('submitted') === 'true';
+---
+
+{submitted ? (
+  <div class="rounded-lg border border-green-200 bg-green-50 p-6 text-center">
+    <p class="font-semibold text-green-800 text-lg mb-1">We got your request.</p>
+    <p class="text-green-700 text-sm">Someone from {siteConfig.businessName} will call you within 1 business hour.</p>
+  </div>
+) : (
+  <form
+    method="POST"
+    action="/functions/submit-lead"
+    class="space-y-4"
+  >
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        required
+        autocomplete="name"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+        placeholder="Your name"
+      />
+    </div>
+
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        required
+        autocomplete="tel"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+        placeholder="(555) 000-0000"
+      />
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+        placeholder="you@example.com"
+      />
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-1">What do you need?</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="3"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-none"
+        placeholder="Brief description of the situation"
+      ></textarea>
+    </div>
+
+    <!-- TrustedForm hidden field — paste snippet from activeprospect.com when ready -->
+    <input type="hidden" name="xxTrustedFormToken" id="xxTrustedFormToken" />
+
+    <button
+      type="submit"
+      class="w-full text-white py-3 rounded font-semibold text-base transition-opacity hover:opacity-90"
+      style="background-color: var(--color-accent);"
+    >
+      Request a free quote
+    </button>
+
+    <p class="text-xs text-gray-500 text-center">
+      No spam. We call within 1 hour during business hours.
+    </p>
+  </form>
+)}
