@@ -1,7 +1,7 @@
 export const siteConfig = {
   // ── Identity ───────────────────────────────────────────────────────────────
   businessName:   "Vallejo Pest Pros",
-  tagline:        "Same-day pest control in Vallejo — ants, rats, and roaches gone fast",
+  tagline:        "Same-day pest control in Vallejo, ants, rats, and roaches gone fast",
   niche:          "pest-control",
   primaryCity:    "Vallejo",
   state:          "CA",
