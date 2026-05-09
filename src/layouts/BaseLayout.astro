@@ -65,5 +65,9 @@ const canonicalUrl = canonical ?? new URL(Astro.url.pathname, base).href;
     </main>
     <Footer />
     <CallTrackingScript />
+    <!-- Cloudflare Web Analytics -->
+    {siteConfig.cfAnalyticsToken && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token":"${siteConfig.cfAnalyticsToken}"}`}></script>
+    )}
   </body>
 </html>

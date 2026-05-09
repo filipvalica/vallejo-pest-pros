@@ -39,7 +39,8 @@ export const siteConfig = {
   },
 
   // ── Analytics ─────────────────────────────────────────────────────────────
-  ga4MeasurementId: "G-XXXXXXXXXX",
+  ga4MeasurementId:   "G-XXXXXXXXXX",
+  cfAnalyticsToken:   "",   // CF Dashboard → Web Analytics → vallejopestpros.com → token
 
   // ── Design ────────────────────────────────────────────────────────────────
   accentColor: "#2d6a4f",   // pest control = forest green
