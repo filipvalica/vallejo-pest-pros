@@ -48,13 +48,23 @@ const faqSchema = {
 
     <div class="mt-12 rounded-lg bg-gray-50 border border-gray-200 p-6 text-center">
       <p class="text-gray-700 font-medium mb-3">Still have questions?</p>
-      <a
-        href={`tel:${siteConfig.phone}`}
-        class="inline-block text-white px-5 py-2 rounded font-semibold text-sm transition-opacity hover:opacity-90"
-        style="background-color: var(--color-accent);"
-      >
-        Call {siteConfig.phone}
-      </a>
+      {siteConfig.phoneActive ? (
+        <a
+          href={`tel:${siteConfig.phone}`}
+          class="inline-block text-white px-5 py-2 rounded font-semibold text-sm transition-opacity hover:opacity-90"
+          style="background-color: var(--color-accent);"
+        >
+          Call {siteConfig.phone}
+        </a>
+      ) : (
+        <a
+          href="/contact"
+          class="inline-block text-white px-5 py-2 rounded font-semibold text-sm transition-opacity hover:opacity-90"
+          style="background-color: var(--color-accent);"
+        >
+          Get in touch
+        </a>
+      )}
     </div>
   </div>
 </BaseLayout>

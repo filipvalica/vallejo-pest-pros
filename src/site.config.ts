@@ -6,6 +6,8 @@ export const siteConfig = {
   primaryCity:    "Vallejo",
   state:          "CA",
   phone:          "+1-PLACEHOLDER-TWILIO",   // replace with Twilio tracking number
+  phoneActive:    false as boolean,           // set true once Twilio number is live
+  formActive:     false as boolean,           // set true once Resend is wired
   email:          "leads@vallejopestpros.com",
 
   // ── Geography ──────────────────────────────────────────────────────────────
@@ -28,7 +30,7 @@ export const siteConfig = {
   trust: {
     responseTime:    "Same-day service available",
     yearsInBusiness: 0,
-    certifications:  "CA SPCB Licensed — Branch 2 & 3",
+    certifications:  "CA SPCB Licensed, Branch 2 & 3",
     guarantee:       "Free re-treatment if pests return",
   },
 

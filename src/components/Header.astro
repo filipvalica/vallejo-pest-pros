@@ -14,12 +14,22 @@ import { siteConfig } from '../site.config';
       <a href="/contact" class="hover:text-accent transition-colors">Contact</a>
     </nav>
 
-    <a
-      href={`tel:${siteConfig.phone}`}
-      class="bg-accent text-white px-4 py-2 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
-      style={`background-color: var(--color-accent);`}
-    >
-      {siteConfig.phone.replace(/\+1-?/, '')}
-    </a>
+    {siteConfig.phoneActive ? (
+      <a
+        href={`tel:${siteConfig.phone}`}
+        class="bg-accent text-white px-4 py-2 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
+        style={`background-color: var(--color-accent);`}
+      >
+        {siteConfig.phone.replace(/\+1-?/, '')}
+      </a>
+    ) : (
+      <a
+        href="/contact"
+        class="bg-accent text-white px-4 py-2 rounded text-sm font-semibold hover:opacity-90 transition-opacity"
+        style={`background-color: var(--color-accent);`}
+      >
+        Get a quote
+      </a>
+    )}
   </div>
 </header>

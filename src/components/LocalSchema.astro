@@ -5,7 +5,7 @@ const localBusiness = {
   "@context": "https://schema.org",
   "@type": siteConfig.schema.businessType,
   "name": siteConfig.businessName,
-  "telephone": siteConfig.phone,
+  ...(siteConfig.phoneActive ? { "telephone": siteConfig.phone } : {}),
   "email": siteConfig.email,
   "address": {
     "@type": "PostalAddress",

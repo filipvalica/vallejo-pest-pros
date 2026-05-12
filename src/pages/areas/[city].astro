@@ -43,13 +43,23 @@ const breadcrumb = {
         {entry.data.title}
       </h1>
       <p class="text-lg text-gray-600 mb-6">{entry.data.description}</p>
-      <a
-        href={`tel:${siteConfig.phone}`}
-        class="inline-flex items-center gap-2 text-white px-5 py-3 rounded font-semibold text-sm transition-opacity hover:opacity-90"
-        style="background-color: var(--color-accent);"
-      >
-        Call now — {siteConfig.phone}
-      </a>
+      {siteConfig.phoneActive ? (
+        <a
+          href={`tel:${siteConfig.phone}`}
+          class="inline-flex items-center gap-2 text-white px-5 py-3 rounded font-semibold text-sm transition-opacity hover:opacity-90"
+          style="background-color: var(--color-accent);"
+        >
+          Call now — {siteConfig.phone}
+        </a>
+      ) : (
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 text-white px-5 py-3 rounded font-semibold text-sm transition-opacity hover:opacity-90"
+          style="background-color: var(--color-accent);"
+        >
+          Get a free quote
+        </a>
+      )}
     </div>
   </section>
 
@@ -78,12 +88,14 @@ const breadcrumb = {
     </div>
   </section>
 
-  <section class="py-14 px-4 bg-white">
-    <div class="max-w-md mx-auto">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">
-        Free quote for {entry.data.city}
-      </h2>
-      <ContactForm />
-    </div>
-  </section>
+  {siteConfig.formActive && (
+    <section class="py-14 px-4 bg-white">
+      <div class="max-w-md mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2 text-center">
+          Free quote for {entry.data.city}
+        </h2>
+        <ContactForm />
+      </div>
+    </section>
+  )}
 </BaseLayout>
