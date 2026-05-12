@@ -5,8 +5,8 @@ export const siteConfig = {
   niche:          "pest-control",
   primaryCity:    "Vallejo",
   state:          "CA",
-  phone:          "+1-PLACEHOLDER-TWILIO",   // replace with Twilio tracking number
-  phoneActive:    false as boolean,           // set true once Twilio number is live
+  phone:          "+1 (707) 229-0223",
+  phoneActive:    true as boolean,
   formActive:     false as boolean,           // set true once Resend is wired
   email:          "leads@vallejopestpros.com",
 
